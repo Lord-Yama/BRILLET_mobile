@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.brillet_esiea.R
 
-class PokemonAdapter(private val dataSet: Array<String>) :
+class PokemonAdapter(private var dataSet: List<String>) :
     RecyclerView.Adapter<PokemonAdapter.ViewHolder>() {
 
     /**
@@ -15,12 +15,17 @@ class PokemonAdapter(private val dataSet: Array<String>) :
      * (custom ViewHolder).
      */
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val textView: TextView
+        var textView: TextView = view.findViewById(R.id.pokemon_name)
 
         init {
             // Define click listener for the ViewHolder's View.
             textView = view.findViewById(R.id.pokemon_name)
         }
+    }
+
+    fun updatelist(list: List<String>){
+        dataSet = list
+        notifyDataSetChanged()
     }
 
     // Create new views (invoked by the layout manager)
