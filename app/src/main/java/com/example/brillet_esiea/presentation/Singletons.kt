@@ -10,7 +10,8 @@ import java.io.File
 
 class Singletons {
     companion object{
-        var cache = Cache(File(context?.cacheDir, "responses"), 10*1024*1024)
+        var cache = Cache(File(context?.cacheDir, "responses"), 10 * 1024 * 1024) // 10 MiB
+
         val okhttpClient: OkHttpClient = OkHttpClient().newBuilder()
             .cache(cache)
             .build()
