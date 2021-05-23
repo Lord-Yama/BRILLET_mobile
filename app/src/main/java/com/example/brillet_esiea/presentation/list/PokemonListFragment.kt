@@ -43,7 +43,7 @@ class PokemonListFragment : Fragment() {
             adapter = this@PokemonListFragment.adapter
         }
 
-        Singletons.pokemonApi.getPokemonList("10").enqueue(object : Callback<PokemonListResponse>{
+        Singletons.pokemonApi.getPokemonList("9").enqueue(object : Callback<PokemonListResponse>{
             override fun onFailure(
                 call: Call<PokemonListResponse>,
                 t: Throwable
