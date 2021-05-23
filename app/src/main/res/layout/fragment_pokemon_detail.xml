@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".prensentation.detail.PokemonDetailFragment">
+    tools:context=".presentation.detail.PokemonDetailFragment">
 
     <TextView
         android:id="@+id/pokemon_detail_name"

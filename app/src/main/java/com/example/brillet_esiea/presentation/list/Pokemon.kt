@@ -1,4 +1,4 @@
-package com.example.brillet_esiea.prensentation.list
+package com.example.brillet_esiea.presentation.list
 
 class Pokemon(
     val name: String,

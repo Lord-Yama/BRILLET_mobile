@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/PokemonListFragment"
-        android:name="com.example.brillet_esiea.prensentation.list.PokemonListFragment"
+        android:name="com.example.brillet_esiea.presentation.list.PokemonListFragment"
         android:label="@string/first_fragment_label"
         tools:layout="@layout/fragment_pokemon_list">
 
@@ -17,7 +17,7 @@
     </fragment>
     <fragment
         android:id="@+id/PokemonDetailFragment"
-        android:name="com.example.brillet_esiea.prensentation.detail.PokemonDetailFragment"
+        android:name="com.example.brillet_esiea.presentation.detail.PokemonDetailFragment"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_pokemon_detail">
 

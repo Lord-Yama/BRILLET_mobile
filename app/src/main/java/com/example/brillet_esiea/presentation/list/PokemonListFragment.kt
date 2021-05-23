@@ -1,4 +1,4 @@
-package com.example.brillet_esiea.prensentation.list
+package com.example.brillet_esiea.presentation.list
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,8 +10,9 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.brillet_esiea.R
-import com.example.brillet_esiea.prensentation.Singletons
-import com.example.brillet_esiea.prensentation.api.PokemonListResponse
+import com.example.brillet_esiea.presentation.Singletons
+import com.example.brillet_esiea.presentation.api.PokemonListResponse
+import com.example.brillet_esiea.presentation.list.PokemonAdapter
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

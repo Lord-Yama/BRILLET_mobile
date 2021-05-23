@@ -1,4 +1,4 @@
-package com.example.brillet_esiea.prensentation.detail
+package com.example.brillet_esiea.presentation.detail
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,9 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import com.example.brillet_esiea.R
-import com.example.brillet_esiea.prensentation.Singletons
-import com.example.brillet_esiea.prensentation.api.PokemonDetailResponse
-import com.example.brillet_esiea.prensentation.api.PokemonListResponse
+import com.example.brillet_esiea.presentation.Singletons
+import com.example.brillet_esiea.presentation.api.PokemonDetailResponse
+import com.example.brillet_esiea.presentation.api.PokemonListResponse
 import retrofit2.Call
 import retrofit2.Response
 import javax.security.auth.callback.Callback

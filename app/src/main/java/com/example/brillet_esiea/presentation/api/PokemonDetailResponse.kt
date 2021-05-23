@@ -1,4 +1,4 @@
-package com.example.brillet_esiea.prensentation.api
+package com.example.brillet_esiea.presentation.api
 
 data class PokemonDetailResponse (
     val name: String,

@@ -1,4 +1,4 @@
-package com.example.brillet_esiea.prensentation.list
+package com.example.brillet_esiea.presentation.list
 
 import android.view.LayoutInflater
 import android.view.View
