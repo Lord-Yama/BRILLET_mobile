@@ -36,7 +36,8 @@ class PokemonDetailFragment : Fragment() {
     }
 
     private fun callApi(){
-        Singletons.pokemonApi.getPokemonDetail("1").enqueue(object : retrofit2.Callback<PokemonDetailResponse>{
+        val id:Int = arguments?.getInt("pokemonId") ?: -1
+        Singletons.pokemonApi.getPokemonDetail(id).enqueue(object : retrofit2.Callback<PokemonDetailResponse>{
             override fun onFailure(
                 call: Call<PokemonDetailResponse>,
                 t: Throwable
