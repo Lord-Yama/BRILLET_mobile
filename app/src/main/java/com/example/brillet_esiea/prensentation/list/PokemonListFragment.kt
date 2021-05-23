@@ -9,13 +9,11 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.brillet_esiea.R
-import com.example.brillet_esiea.prensentation.api.PokemonApi
-import com.example.brillet_esiea.prensentation.api.PokemonResponse
+import com.example.brillet_esiea.prensentation.Singletons
+import com.example.brillet_esiea.prensentation.api.PokemonListResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
 
 /**
@@ -25,8 +23,6 @@ class PokemonListFragment : Fragment() {
 
     private lateinit var recyclerView: RecyclerView
     private val adapter = PokemonAdapter(listOf(), ::onClickedPokemon)
-
-    private val layoutManager = LinearLayoutManager(context)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,32 +37,25 @@ class PokemonListFragment : Fragment() {
         recyclerView = view.findViewById(R.id.pokemon_recyclerview)
 
         recyclerView.apply {
-            layoutManager = this@PokemonListFragment.layoutManager
+            layoutManager = LinearLayoutManager(context)
             adapter = this@PokemonListFragment.adapter
         }
 
-        val retrofit = Retrofit.Builder()
-            .baseUrl("https://pokeapi.co/api/v2/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-
-        val pokemonApi: PokemonApi = retrofit.create(PokemonApi::class.java)
-
-        pokemonApi.getPokemonList("50").enqueue(object : Callback<PokemonResponse>{
+        Singletons.pokemonApi.getPokemonList("10").enqueue(object : Callback<PokemonListResponse>{
             override fun onFailure(
-                call: Call<PokemonResponse>,
+                call: Call<PokemonListResponse>,
                 t: Throwable
             ){
                 //TODO("not implemented")
             }
 
             override fun onResponse(
-                call: Call<PokemonResponse>,
-                response: Response<PokemonResponse>
+                call: Call<PokemonListResponse>,
+                listResponse: Response<PokemonListResponse>
             ){
-                if(response.isSuccessful && response.body() != null){
-                    val pokemonResponse : PokemonResponse =  response.body()!!
-                    adapter.updatelist(pokemonResponse.results)
+                if(listResponse.isSuccessful && listResponse.body() != null){
+                    val pokemonListResponse : PokemonListResponse =  listResponse.body()!!
+                    adapter.updatelist(pokemonListResponse.results)
                 }
             }
         })
