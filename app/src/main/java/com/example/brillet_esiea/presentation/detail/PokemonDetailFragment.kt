@@ -43,6 +43,8 @@ class PokemonDetailFragment : Fragment() {
         textViewHeight = view.findViewById(R.id.pokemon_detail_height)
         textViewType = view.findViewById(R.id.pokemon_detail_type)
         textViewStats = view.findViewById(R.id.pokemon_detail_stats)
+
+        callApi()
     }
 
     private fun callApi(){
