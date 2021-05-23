@@ -10,19 +10,23 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class PokemonListViewModel : ViewModel() {
-    val pokeList : MutableLiveData<List<Pokemon>> = MutableLiveData()
+    val pokeList : MutableLiveData<PokemonModel> = MutableLiveData()
 
     init{
         callApi()
     }
     private fun callApi(){
+        pokeList.value = PokemonLoader
         Singletons.pokemonApi.getPokemonList("9").enqueue(object : Callback<PokemonListResponse>{
-            override fun onFailure(call: Call<PokemonListResponse>, t: Throwable){}
+            override fun onFailure(call: Call<PokemonListResponse>, t: Throwable){
+                pokeList.value = PokemonError
+            }
             override fun onResponse(call: Call<PokemonListResponse>, response: Response<PokemonListResponse>){
                 if(response.isSuccessful && response.body() != null){
                     val pokemonResponse : PokemonListResponse = response.body()!!
-                    pokeList.value = pokemonResponse.results
-                   // adapter.updateList(pokemonResponse.results)
+                    pokeList.value = PokemonSuccess(pokemonResponse.results)
+                }else{
+                    pokeList.value = PokemonError
                 }
             }
         })
