@@ -5,11 +5,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.brillet_esiea.R
 import com.example.brillet_esiea.presentation.Singletons
 import com.example.brillet_esiea.presentation.api.PokemonDetailResponse
 import com.example.brillet_esiea.presentation.api.PokemonListResponse
+import com.example.brillet_esiea.presentation.api.PokemonSlot
+import com.example.brillet_esiea.presentation.api.PokemonType
 import retrofit2.Call
 import retrofit2.Response
 import javax.security.auth.callback.Callback
@@ -20,6 +25,9 @@ import javax.security.auth.callback.Callback
 class PokemonDetailFragment : Fragment() {
 
     private lateinit var textViewName: TextView
+    private lateinit var textViewHeight: TextView
+    private lateinit var textViewType: TextView
+    private lateinit var textViewStats: TextView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,7 +40,9 @@ class PokemonDetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         textViewName = view.findViewById(R.id.pokemon_detail_name)
-        callApi()
+        textViewHeight = view.findViewById(R.id.pokemon_detail_height)
+        textViewType = view.findViewById(R.id.pokemon_detail_type)
+        textViewStats = view.findViewById(R.id.pokemon_detail_stats)
     }
 
     private fun callApi(){
@@ -48,6 +58,9 @@ class PokemonDetailFragment : Fragment() {
             ){
                 if(response.isSuccessful && response.body() != null){
                     textViewName.text = response.body()!!.name
+                    textViewHeight.text = response.body()!!.height.toString()
+                    textViewType.text = response.body()!!.types.toString()
+                    textViewStats.text = response.body()!!.stats.toString()
                 }
             }
         })
