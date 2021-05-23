@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.brillet_esiea.R
 
-class PokemonAdapter(private var dataSet: List<Pokemon>) :
+class PokemonAdapter(private var dataSet: List<Pokemon>, var listener: ((Pokemon) -> Unit)? = null) :
     RecyclerView.Adapter<PokemonAdapter.ViewHolder>() {
 
     /**
@@ -15,7 +15,7 @@ class PokemonAdapter(private var dataSet: List<Pokemon>) :
      * (custom ViewHolder).
      */
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        var textView: TextView = view.findViewById(R.id.pokemon_name)
+        var textView: TextView
 
         init {
             // Define click listener for the ViewHolder's View.
@@ -44,6 +44,9 @@ class PokemonAdapter(private var dataSet: List<Pokemon>) :
         // contents of the view with that element
         val pokemon:Pokemon = dataSet[position]
         viewHolder.textView.text = pokemon.name
+        viewHolder.itemView.setOnClickListener {
+            listener?.invoke(pokemon)
+        }
     }
 
     // Return the size of your dataset (invoked by the layout manager)
